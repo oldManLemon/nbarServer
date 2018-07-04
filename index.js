@@ -17,7 +17,7 @@ const config = {
 function DBconn(query, res) {
     //Close SQL first incase, I can't seem to close it at the end without everything breaking will fix later. 
     sql.close();
-    //Connect See documentation REMEMBER catch the error or everything goes to hell
+    //Connect See documentation for mssql REMEMBER catch the error or everything goes to hell
     sql.connect(config, function (err) {
         if (err) console.log(err);
         var request = new sql.Request(); //here is the request constructor
