@@ -16,7 +16,7 @@ const config = {
 
 function DBconn(query, res) {
     //Close SQL first incase, I can't seem to close it at the end without everything breaking will fix later. 
-    sql.close();
+    //sql.close();
     //Connect See documentation for mssql REMEMBER catch the error or everything goes to hell
     sql.connect(config, function (err) {
         if (err) console.log(err);
@@ -25,9 +25,12 @@ function DBconn(query, res) {
             if (err) console.log(err)
             res.json(
                 row.recordset //Defines the recordset so that it cleans up the crap around it as it calls multiples elements
+                
             )
+            sql.close(); //Seems to be a better place for close
         })
     })
+    //.then(console.log("yay"));
 }
 app.use(cors());
 //Mapping out the API's for react
